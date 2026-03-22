@@ -20,13 +20,14 @@ public class TarefaController {
 
     @GetMapping
     public ResponseEntity<List<TarefaModel>> findAll(){
-        List<TarefaModel> tarefa = tarefaService.findAll();
-        return ResponseEntity.ok().body(tarefa);
+        List<TarefaModel> tarefas = tarefaService.findAll();
+        return ResponseEntity.ok().body(tarefas);
     }
 
     @GetMapping("/{id}")
-    public TarefaModel buscarTarefaPorId(@PathVariable Long id){
-        return tarefaService.buscarTarefaPorId(id);
+    public ResponseEntity<TarefaModel> buscarTarefaPorId(@PathVariable Long id){
+        TarefaModel tarefa =  tarefaService.buscarTarefaPorId(id);
+        return ResponseEntity.ok(tarefa);
     }
 
     @PostMapping
